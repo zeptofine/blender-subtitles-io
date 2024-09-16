@@ -1,0 +1,35 @@
+version = 1
+requires-python = ">=3.12"
+
+[[package]]
+name = "blender-subtitles-io"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "fake-bpy-module" },
+    { name = "pysubs2" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "fake-bpy-module", specifier = ">=20240915" },
+    { name = "pysubs2", specifier = ">=1.7.3" },
+]
+
+[[package]]
+name = "fake-bpy-module"
+version = "20240915"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/de/4c/a81189e49b5052eb3c9791748c1b6e0cca1bfa7324fd198f71090e333636/fake_bpy_module-20240915.tar.gz", hash = "sha256:1ff6925edd8cb25b2f27afbd3a3dc5c0b6dbee2d40156e8059730e28c4c19eb9", size = 1110908 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/60/99/29b3f2dfdeeb73246990783a32f0f3ed0bcd5a9ac8d414cf641706da57f9/fake_bpy_module-20240915-py3-none-any.whl", hash = "sha256:d6dcf88ea70b079581e3d90b5826d9d2260893df98e9e1f129eff638685181d7", size = 1245575 },
+]
+
+[[package]]
+name = "pysubs2"
+version = "1.7.3"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/27/f0/c496409796d038e65161b8cddc6925d4c2c53489fb6f690eb28027ecc58a/pysubs2-1.7.3.tar.gz", hash = "sha256:b0130f373390736754531be4e68a0fa521e825fa15cc8ff506e4f8ca2c17459a", size = 1123849 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f2/47/1afe4b3ed63f5c50bfe1d3b2d97f2bdee36c6b3f05584d3c34f27c5d488c/pysubs2-1.7.3-py3-none-any.whl", hash = "sha256:de438c868d2c656781c4a78f220ec3a6fd6d52be49266c81fe912d2527002d44", size = 37971 },
+]

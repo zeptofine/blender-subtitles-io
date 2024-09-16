@@ -5,7 +5,7 @@ A script I made to convert TextSequences to .ass (SubStation Alpha) subtitle for
 ![alt text](github/file.png)
 
 
-Many features are missing at the time. For the best experience, try to install an "Arial"-esque font and refrain from updating fileds in the Layout dropdown menu.
+Many features are missing at the time. For the best experience, try to install an "Arial"-esque font and refrain from updating fields in the Layout dropdown menu.
 
 ![alt text](github/layout.png)
 

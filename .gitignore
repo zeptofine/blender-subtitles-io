@@ -1,7 +1,10 @@
-*.webm
-*.srt
-*.ass
-*.srv3
+**/*.webm
+**/*.srt
+**/*.ass
+**/*.srv3
+**/*.mp4
+**/*.opus
+**/*.blend1
 
 .venv/
 **/__pycache__/

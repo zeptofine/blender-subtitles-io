@@ -40,6 +40,15 @@ def tuple2c(
     )
 
 
+def c2tuple(c: Color) -> tuple[float, float, float, float]:
+    return (
+        c.r / 255,
+        c.g / 255,
+        c.b / 255,
+        1 - c.a / 255,  # Alpha is inverted???
+    )
+
+
 def c2bgr_hex(c: Color) -> str:
     # returns a BGR hex representation of the color. does not include the `H` prefix.
     return f"{c.b:02X}{c.g:02X}{c.r:02X}"
@@ -101,6 +110,22 @@ class StyleEvent:
             primarycolor=tuple2c(self.color),
             backcolor=tuple2c(self.shadow_color),
             shadow=self.shadow_size,
+            outlinecolor=tuple2c(self.outline_color),
+            outline=self.outline_size,
+        )
+
+    @classmethod
+    def from_ssa(cls, ssa: SSAStyle):
+        return StyleEvent(
+            font_size=ssa.fontsize,
+            bold=ssa.bold,
+            italic=ssa.bold,
+            alignment=ssa.alignment,
+            color=c2tuple(ssa.primarycolor),
+            shadow_color=c2tuple(ssa.backcolor),
+            shadow_size=ssa.shadow,
+            outline_color=c2tuple(ssa.outlinecolor),
+            outline_size=ssa.outline,
         )
 
 
@@ -484,6 +509,32 @@ for strip, events in event_mapping.items():
     file.extend(new_file)
 
 file.styles["Default"].fontsize = 100
+
+# simplify styles
+styles = {(StyleEvent.from_ssa(style), name) for name, style in file.styles.items()}
+pprint(styles)
+new_styles: dict[StyleEvent, str] = {}
+name_mappings: dict[str, str] = {}
+for event, name in styles:
+    if event not in new_styles:
+        new_styles[event] = name
+        name_mappings[name] = name
+    else:  # replace every instance with the one in new_styles
+        name_mappings[name] = new_styles[event]
+
+print("NUM OF STYLES:", len(file.styles))
+for old, new in name_mappings.items():
+    if old == new:
+        continue
+
+    # If the styles are identical this is safe to do
+    file.styles.pop(new)
+
+    file.rename_style(old, new)
+print("NUM OF STYLES:", len(file.styles))
+
+
+
 
 print("Saving to ", OUTPUT_PATH)
 file.save(OUTPUT_PATH)
