@@ -1,0 +1,8 @@
+[project]
+name = "blender-subtitles-io"
+version = "0.1.0"
+authors = [{ name = "Erin MacDonald", email = "zeptofine@gmail.com" }]
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = ["pysubs2>=1.7.3", "fake-bpy-module>=20240915"]

@@ -1,0 +1,7 @@
+*.webm
+*.srt
+*.ass
+*.srv3
+
+.venv/
+**/__pycache__/
